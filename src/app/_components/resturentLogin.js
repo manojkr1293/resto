@@ -14,8 +14,8 @@ const ResturentLogin = () =>{
       setErr(true);
       return false;
     }
-
-    let response = await fetch(`api/resturent`,{
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    let response = await fetch(`${apiUrl}api/resturent`,{
       method:"POST",
       body:JSON.stringify({email,password,isLogin:true})
     });
