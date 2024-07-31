@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await mongoose.connect(connectionStr, { useNewUrlParser: true });
+  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
   const data = await resturentSchema.find();
   console.log(data);
   return NextResponse.json({ result: data })
@@ -12,7 +12,7 @@ export async function GET() {
 
 export async function POST(request){
   let payload = await request.json();
-  await mongoose.connect(connectionStr, { useNewUrlParser: true });
+  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
   let result;
   let success = false;
   if(payload.isLogin){
