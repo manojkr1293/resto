@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request){
   const payload = await request.json();
-  await mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true})
+  await mongoose.connect(process.env.MONGODB_URI)
   const foodItem = new foodSchema(payload);
   const result = await foodItem.save();
   let success= false;
