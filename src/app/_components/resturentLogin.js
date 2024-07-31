@@ -15,7 +15,7 @@ const ResturentLogin = () =>{
       return false;
     }
 
-    let response = await fetch("http://localhost:3000/api/resturent",{
+    let response = await fetch(`api/resturent`,{
       method:"POST",
       body:JSON.stringify({email,password,isLogin:true})
     });

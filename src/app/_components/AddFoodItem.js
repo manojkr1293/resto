@@ -7,7 +7,7 @@ const AddFoodItem = (props) =>{
   const [err, setErr] = useState(false);
 
   const handleAddItem = async () =>{ 
-    console.log(foodname,price,image)
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     if(!foodname || !price || !image){
       setErr(true);
       return false;
@@ -21,7 +21,7 @@ const AddFoodItem = (props) =>{
     if(restoUser){
       restoId = restoUser._id
     }
-    let response = await fetch("http://localhost:3000/api/resturent/fooditem",{
+    let response = await fetch(`${apiUrl}api/resturent/fooditem`,{
       method:"post",
       body:JSON.stringify({name:foodname,price,image_path:image,resto_id:restoId})
     })
@@ -67,7 +67,6 @@ const AddFoodItem = (props) =>{
           <button onClick={handleAddItem} className="text-2xl text-white font-semibold bg-blue-600 rounded-sm p-2 mt-4 block">Submit</button>
         </div>
       </div>
-
      </div>
     </div>
     </>
